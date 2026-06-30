@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Siapa Oshimu? — JKT48</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="Oshi.css" />
+  </head>
+
+  <body>
+    <!-- Background Layers -->
+    <div class="bg-layer" aria-hidden="true">
+      <div class="bg-gradient"></div>
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+      <div class="orb orb-4"></div>
+      <div class="bg-stars">
+        <span class="bg-star"></span>
+        <span class="bg-star"></span>
+        <span class="bg-star"></span>
+        <span class="bg-star"></span>
+        <span class="bg-star"></span>
+        <span class="bg-star"></span>
+        <span class="bg-star"></span>
+        <span class="bg-star"></span>
+        <span class="bg-star"></span>
+        <span class="bg-star"></span>
+      </div>
+      <canvas id="particleCanvas"></canvas>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast" role="alert">
+      <i class="fa-solid fa-circle-exclamation"></i>
+      <span id="toastMsg">Tulis namamu dulu yuk!</span>
+    </div>
+
+    <!-- Confetti Container -->
+    <div class="confetti-container" id="confettiBox" aria-hidden="true"></div>
+
+    <!-- Main Card -->
+    <main class="card-wrapper">
+      <div class="card">
+        <div class="card-inner-glow" aria-hidden="true"></div>
+
+        <!-- Brand -->
+        <div class="brand">
+          <div class="brand-icon" aria-hidden="true">
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <p class="brand-label">JKT48 Fan Zone</p>
+          <h1 class="brand-title">
+            Siapa <span class="highlight">Oshimu</span>?
+          </h1>
+        </div>
+
+        <!-- Subtitle -->
+        <p class="subtitle">
+          Masukkan namamu, lalu temukan siapa member JKT48 yang jadi oshimu!
+          <br />
+          <a
+            href="https://p2k.stekom.ac.id/ensiklopedia/Daftar_anggota_JKT48"
+            target="_blank"
+            rel="noopener"
+          >
+            Lihat daftar member
+            <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.6rem;"></i>
+          </a>
+        </p>
+
+        <!-- Divider -->
+        <div class="divider" aria-hidden="true">
+          <span class="divider-line"></span>
+          <span class="divider-dot"></span>
+          <span class="divider-line"></span>
+        </div>
+
+        <!-- Input -->
+        <div class="input-group">
+          <i class="fa-solid fa-user icon-left" aria-hidden="true"></i>
+          <input
+            type="text"
+            id="nameInput"
+            class="input-field"
+            placeholder="Ketik namamu di sini..."
+            aria-label="Nama kamu"
+            maxlength="50"
+            autocomplete="off"
+          />
+        </div>
+
+        <!-- Buttons -->
+        <div class="btn-group">
+          <button class="btn-submit" id="submitBtn" aria-label="Cari oshi">
+            <span>
+              <i class="fa-solid fa-shuffle" aria-hidden="true"></i>
+              Cari Oshimu
+            </span>
+          </button>
+          <button class="btn-reset" id="resetButton" aria-label="Reset">
+            <i class="fa-solid fa-rotate-left" aria-hidden="true"></i>
+          </button>
+        </div>
+
+        <!-- Result -->
+        <div class="result-area" id="resultArea">
+          <div class="result-card">
+            <p class="result-label">
+              <i class="fa-solid fa-crown" aria-hidden="true"></i>
+              Oshimu adalah
+            </p>
+            <p class="result-name" id="nameDisplay"></p>
+            <p class="result-hint" id="resultHint"></p>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <p class="footer-tag">
+          <i class="fa-solid fa-star star-icon" aria-hidden="true"></i>
+          Satu Hati, Satu Cinta, JKT48
+          <i class="fa-solid fa-star star-icon" aria-hidden="true"></i>
+        </p>
+      </div>
+    </main>
+
+    <script src="Oshi.js"></script>
+  </body>
+</html>
