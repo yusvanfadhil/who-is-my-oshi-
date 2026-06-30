@@ -3,73 +3,82 @@
 ════════════════════════════════════════════════════════════ */
 var namesWithWeights = [
   // Team Love
-  { name: "Alya Amanda Fatihah", weight: 3 },
-  { name: "Anindya Ramadhani Purnomo", weight: 3 },
-  { name: "Aurellia", weight: 3 },
-  { name: "Aurhel Alana Tirta", weight: 3 },
-  { name: "Cathleen Hana Nixie", weight: 3 },
-  { name: "Celline Thefani", weight: 3 },
-  { name: "Cynthia Yaputera", weight: 3 },
-  { name: "Fiony Alveria Tantri", weight: 3 },
-  { name: "Fritzy Rosmerian", weight: 3 },
-  { name: "Grace Octaviani Tanujaya", weight: 3 },
-  { name: "Hillary Abigail", weight: 3 },
-  { name: "Indah Cahya Nabilla", weight: 3 },
-  { name: "Jazzlyn Agatha Trisha", weight: 3 },
-  { name: "Michelle Alexandra Suandi", weight: 3 },
-  { name: "Nayla Suji Aurelia", weight: 3 },
+  { name: "Alya Amanda Fatihah", weight: 3, group: "Team Love" },
+  { name: "Anindya Ramadhani Purnomo", weight: 3, group: "Team Love" },
+  { name: "Aurellia", weight: 3, group: "Team Love" },
+  { name: "Aurhel Alana Tirta", weight: 3, group: "Team Love" },
+  { name: "Cathleen Hana Nixie", weight: 3, group: "Team Love" },
+  { name: "Celline Thefani", weight: 3, group: "Team Love" },
+  { name: "Cynthia Yaputera", weight: 3, group: "Team Love" },
+  { name: "Fiony Alveria Tantri", weight: 3, group: "Team Love" },
+  { name: "Fritzy Rosmerian", weight: 3, group: "Team Love" },
+  { name: "Grace Octaviani Tanujaya", weight: 3, group: "Team Love" },
+  { name: "Hillary Abigail", weight: 3, group: "Team Love" },
+  { name: "Indah Cahya Nabilla", weight: 3, group: "Team Love" },
+  { name: "Jazzlyn Agatha Trisha", weight: 3, group: "Team Love" },
+  { name: "Michelle Alexandra Suandi", weight: 3, group: "Team Love" },
+  { name: "Nayla Suji Aurelia", weight: 3, group: "Team Love" },
   // Team Dream
-  { name: "Adeline Wijaya", weight: 3 },
-  { name: "Febriola Sinambela", weight: 3 },
-  { name: "Freyanashifa Jayawardana", weight: 3 },
-  { name: "Gabriela Abigail Mewengkang", weight: 3 },
-  { name: "Gendis Mayrannisa Setiawan", weight: 3 },
-  { name: "Gita Sekar Andarini", weight: 3 },
-  { name: "Greesella Sophina Adhalia", weight: 3 },
-  { name: "Helisma Mauludzunia Putri Kurnia", weight: 3 },
-  { name: "Jesslyn Septiani Elly", weight: 3 },
-  { name: "Marsha Lenathea Lapian", weight: 3 },
-  { name: "Nina Tutachia Chapman", weight: 3 },
-  { name: "Oline Manuel Chay", weight: 3 },
-  { name: "Shabilqis Naila Bustami", weight: 3 },
+  { name: "Adeline Wijaya", weight: 3, group: "Team Dream" },
+  { name: "Febriola Sinambela", weight: 3, group: "Team Dream" },
+  { name: "Freyanashifa Jayawardana", weight: 3, group: "Team Dream" },
+  { name: "Gabriela Abigail Mewengkang", weight: 3, group: "Team Dream" },
+  { name: "Gendis Mayrannisa Setiawan", weight: 3, group: "Team Dream" },
+  { name: "Gita Sekar Andarini", weight: 3, group: "Team Dream" },
+  { name: "Greesella Sophina Adhalia", weight: 3, group: "Team Dream" },
+  { name: "Helisma Mauludzunia Putri Kurnia", weight: 3, group: "Team Dream" },
+  { name: "Jesslyn Septiani Elly", weight: 3, group: "Team Dream" },
+  { name: "Marsha Lenathea Lapian", weight: 3, group: "Team Dream" },
+  { name: "Nina Tutachia Chapman", weight: 3, group: "Team Dream" },
+  { name: "Oline Manuel Chay", weight: 3, group: "Team Dream" },
+  { name: "Shabilqis Naila Bustami", weight: 3, group: "Team Dream" },
   // Team Passion
-  { name: "Abigail Rachel Lie", weight: 3 },
-  { name: "Angelina Christy", weight: 3 },
-  { name: "Catherina Vallencia Kurniawan", weight: 3 },
-  { name: "Cornelia Syafa Vanisa", weight: 3 },
-  { name: "Dena Natalia Ang", weight: 3 },
-  { name: "Desy Natalia Ang", weight: 3 },
-  { name: "Feni Fitriyanti", weight: 3 },
-  { name: "Jessica Rich Chandra", weight: 3 },
-  { name: "Kathrina Irene Indarto Putri", weight: 3 },
-  { name: "Lulu Azkiya Salsabila", weight: 3 },
-  { name: "Michelle Levia Arifin", weight: 3 },
-  { name: "Mutiara Azzahra Umandana", weight: 3 },
-  { name: "Raisha Syifa Wardhana", weight: 3 },
-  { name: "Ribka Budiman", weight: 3 },
-  { name: "Victoria Kimberly Lukitama", weight: 3 },
+  { name: "Abigail Rachel Lie", weight: 3, group: "Team Passion" },
+  { name: "Angelina Christy", weight: 3, group: "Team Passion" },
+  { name: "Catherina Vallencia Kurniawan", weight: 3, group: "Team Passion" },
+  { name: "Cornelia Syafa Vanisa", weight: 3, group: "Team Passion" },
+  { name: "Dena Natalia Ang", weight: 3, group: "Team Passion" },
+  { name: "Desy Natalia Ang", weight: 3, group: "Team Passion" },
+  { name: "Feni Fitriyanti", weight: 3, group: "Team Passion" },
+  { name: "Jessica Rich Chandra", weight: 3, group: "Team Passion" },
+  { name: "Kathrina Irene Indarto Putri", weight: 3, group: "Team Passion" },
+  { name: "Lulu Azkiya Salsabila", weight: 3, group: "Team Passion" },
+  { name: "Michelle Levia Arifin", weight: 3, group: "Team Passion" },
+  { name: "Mutiara Azzahra Umandana", weight: 3, group: "Team Passion" },
+  { name: "Raisha Syifa Wardhana", weight: 3, group: "Team Passion" },
+  { name: "Ribka Budiman", weight: 3, group: "Team Passion" },
+  { name: "Victoria Kimberly Lukitama", weight: 3, group: "Team Passion" },
   // Trainee Gen 13
-  { name: "Astrella Virgiananda", weight: 3 },
-  { name: "Aulia Riza", weight: 3 },
-  { name: "Bong Aprilli", weight: 3 },
-  { name: "Hagia Sopia", weight: 3 },
-  { name: "Humaira Ramadhani", weight: 3 },
-  { name: "Jacqueline Immanuela", weight: 3 },
-  { name: "Jemima Evodie", weight: 3 },
-  { name: "Mikaela Kusjanto", weight: 3 },
-  { name: "Nur Intan", weight: 3 },
+  { name: "Astrella Virgiananda", weight: 3, group: "Trainee Gen 13" },
+  { name: "Aulia Riza", weight: 3, group: "Trainee Gen 13" },
+  { name: "Bong Aprilli", weight: 3, group: "Trainee Gen 13" },
+  { name: "Hagia Sopia", weight: 3, group: "Trainee Gen 13" },
+  { name: "Humaira Ramadhani", weight: 3, group: "Trainee Gen 13" },
+  { name: "Jacqueline Immanuela", weight: 3, group: "Trainee Gen 13" },
+  { name: "Jemima Evodie", weight: 3, group: "Trainee Gen 13" },
+  { name: "Mikaela Kusjanto", weight: 3, group: "Trainee Gen 13" },
+  { name: "Nur Intan", weight: 3, group: "Trainee Gen 13" },
   // Trainee Gen 14
-  { name: "Afera Thalia", weight: 3 },
-  { name: "Carissa Dini", weight: 3 },
-  { name: "Christabella Bonita", weight: 3 },
-  { name: "Fahira Putri", weight: 3 },
-  { name: "Fatimah Azzahra", weight: 3 },
-  { name: "Heidi Suyangga", weight: 3 },
-  { name: "Maxine Faye Lee", weight: 3 },
-  { name: "Putry Jazyta", weight: 3 },
-  { name: "Ralyne Van Irwan", weight: 3 },
-  { name: "Sona Kalyana", weight: 3 }
+  { name: "Afera Thalia", weight: 3, group: "Trainee Gen 14" },
+  { name: "Carissa Dini", weight: 3, group: "Trainee Gen 14" },
+  { name: "Christabella Bonita", weight: 3, group: "Trainee Gen 14" },
+  { name: "Fahira Putri", weight: 3, group: "Trainee Gen 14" },
+  { name: "Fatimah Azzahra", weight: 3, group: "Trainee Gen 14" },
+  { name: "Heidi Suyangga", weight: 3, group: "Trainee Gen 14" },
+  { name: "Maxine Faye Lee", weight: 3, group: "Trainee Gen 14" },
+  { name: "Putry Jazyta", weight: 3, group: "Trainee Gen 14" },
+  { name: "Ralyne Van Irwan", weight: 3, group: "Trainee Gen 14" },
+  { name: "Sona Kalyana", weight: 3, group: "Trainee Gen 14" }
 ];
+
+function getMemberGroup(name) {
+  for (var i = 0; i < namesWithWeights.length; i++) {
+    if (namesWithWeights[i].name === name) {
+      return namesWithWeights[i].group || 'JKT48';
+    }
+  }
+  return 'JKT48';
+}
 
 var translations = {
   id: {
@@ -92,7 +101,8 @@ var translations = {
     historyTitle: "Riwayat Oshi",
     historyEmpty: "Belum ada hasil.",
     historyName: "Nama",
-    historyOshi: "Oshi"
+    historyOshi: "Oshi",
+    historyGroup: "Status"
   },
   en: {
     pageTitle: "Who Is Your Oshi? - JKT48",
@@ -114,7 +124,8 @@ var translations = {
     historyTitle: "Oshi History",
     historyEmpty: "No results yet.",
     historyName: "Name",
-    historyOshi: "Oshi"
+    historyOshi: "Oshi",
+    historyGroup: "Status"
   },
   ja: {
     pageTitle: "あなたの推しは？ - JKT48",
@@ -136,7 +147,8 @@ var translations = {
     historyTitle: "推し履歴",
     historyEmpty: "まだ結果がありません。",
     historyName: "名前",
-    historyOshi: "推し"
+    historyOshi: "推し",
+    historyGroup: "所属"
   }
 };
 
@@ -215,10 +227,12 @@ function saveOshiResults() {
 
 function addOshiResult(userName, oshiName) {
   if (!userName || !oshiName) return;
+  var group = getMemberGroup(oshiName);
 
   oshiResults.unshift({
     name: userName,
-    oshi: oshiName
+    oshi: oshiName,
+    group: group
   });
 
   oshiResults = oshiResults.slice(0, 50);
@@ -270,12 +284,26 @@ function renderOshiResults() {
     oshiValue.className = 'history-value';
     oshiValue.textContent = item.oshi || '-';
 
+    var groupRow = document.createElement('div');
+    groupRow.className = 'history-group';
+
+    var groupKey = document.createElement('span');
+    groupKey.className = 'history-key';
+    groupKey.textContent = getText('historyGroup');
+
+    var groupValue = document.createElement('span');
+    groupValue.className = 'history-value history-group-value';
+    groupValue.textContent = item.group || getMemberGroup(item.oshi || '');
+
     userRow.appendChild(userKey);
     userRow.appendChild(userValue);
     oshiRow.appendChild(oshiKey);
     oshiRow.appendChild(oshiValue);
+    groupRow.appendChild(groupKey);
+    groupRow.appendChild(groupValue);
     row.appendChild(userRow);
     row.appendChild(oshiRow);
+    row.appendChild(groupRow);
     historyList.appendChild(row);
   });
 }
@@ -496,11 +524,18 @@ var nameGenerator;
   NameGenerator.prototype.showName = function (randomName, nameDisplayElement) {
     var resultHint = document.getElementById('resultHint');
     var resultArea = document.getElementById('resultArea');
+    var groupDisplay = document.getElementById('groupDisplay');
+    var groupName = getMemberGroup(randomName);
 
     /* Render nama dengan gradient text + heartbeat */
     nameDisplayElement.innerHTML =
       '<span class="oshi-text">' + escapeHtml(randomName) + '</span>' +
       '<span class="result-heart"><i class="fa-solid fa-heart"></i></span>';
+
+    if (groupDisplay) {
+      groupDisplay.textContent = groupName;
+      groupDisplay.classList.add('visible');
+    }
 
     /* Burst animation */
     nameDisplayElement.classList.remove('burst-effect', 'fade-out-effect');
@@ -529,6 +564,10 @@ var nameGenerator;
         nameDisplayElement.classList.remove('fade-out-effect');
         resultArea.classList.remove('active');
         resultHint.textContent = '';
+        if (groupDisplay) {
+          groupDisplay.textContent = '';
+          groupDisplay.classList.remove('visible');
+        }
         clearTimer = null;
       }, 800);
     }, 5000);
@@ -551,17 +590,20 @@ var nameGenerator;
     var nameDisplay = document.getElementById('nameDisplay');
     var resultHint = document.getElementById('resultHint');
     var resultArea = document.getElementById('resultArea');
+    var groupDisplay = document.getElementById('groupDisplay');
     var nameInput = document.getElementById('nameInput');
 
     /* Fade out lalu bersihkan */
     nameDisplay.classList.remove('burst-effect');
     nameDisplay.classList.add('fade-out-effect');
     resultHint.classList.remove('visible');
+    if (groupDisplay) groupDisplay.classList.remove('visible');
 
     setTimeout(function () {
       nameDisplay.innerHTML = '';
       nameDisplay.classList.remove('fade-out-effect');
       resultHint.textContent = '';
+      if (groupDisplay) groupDisplay.textContent = '';
       resultArea.classList.remove('active');
     }, 800);
 
