@@ -71,6 +71,215 @@ var namesWithWeights = [
   { name: "Sona Kalyana", weight: 3 }
 ];
 
+var translations = {
+  id: {
+    pageTitle: "Siapa Oshimu? - JKT48",
+    brandLabel: "JKT48 Fan Zone",
+    brandTitle: 'Siapa <span class="highlight">Oshimu</span>?',
+    subtitle: "Masukkan namamu, lalu temukan siapa member JKT48 yang jadi oshimu!",
+    memberLink: "Lihat daftar member",
+    namePlaceholder: "Ketik namamu di sini...",
+    nameAria: "Nama kamu",
+    submit: "Cari Oshimu",
+    submitAria: "Cari oshi",
+    resetAria: "Reset",
+    resultLabel: "Oshimu adalah",
+    resultHint: "Hasil akan hilang dalam 5 detik...",
+    emptyName: "Tulis namamu dulu yuk!",
+    resetDone: "Data sudah direset!",
+    footer: "Satu Hati, Satu Cinta, JKT48",
+    languageAria: "Pilih bahasa",
+    historyTitle: "Riwayat Oshi",
+    historyEmpty: "Belum ada hasil.",
+    historyName: "Nama",
+    historyOshi: "Oshi"
+  },
+  en: {
+    pageTitle: "Who Is Your Oshi? - JKT48",
+    brandLabel: "JKT48 Fan Zone",
+    brandTitle: 'Who Is <span class="highlight">Your Oshi</span>?',
+    subtitle: "Enter your name and discover which JKT48 member becomes your oshi!",
+    memberLink: "View member list",
+    namePlaceholder: "Type your name here...",
+    nameAria: "Your name",
+    submit: "Find My Oshi",
+    submitAria: "Find oshi",
+    resetAria: "Reset",
+    resultLabel: "Your oshi is",
+    resultHint: "The result will disappear in 5 seconds...",
+    emptyName: "Please enter your name first!",
+    resetDone: "Data has been reset!",
+    footer: "One Heart, One Love, JKT48",
+    languageAria: "Choose language",
+    historyTitle: "Oshi History",
+    historyEmpty: "No results yet.",
+    historyName: "Name",
+    historyOshi: "Oshi"
+  },
+  ja: {
+    pageTitle: "あなたの推しは？ - JKT48",
+    brandLabel: "JKT48ファンゾーン",
+    brandTitle: 'あなたの<span class="highlight">推し</span>は？',
+    subtitle: "名前を入力して、あなたのJKT48の推しメンを見つけよう！",
+    memberLink: "メンバー一覧を見る",
+    namePlaceholder: "ここに名前を入力...",
+    nameAria: "あなたの名前",
+    submit: "推しを探す",
+    submitAria: "推しを探す",
+    resetAria: "リセット",
+    resultLabel: "あなたの推しは",
+    resultHint: "結果は5秒後に消えます...",
+    emptyName: "まず名前を入力してね！",
+    resetDone: "データをリセットしました！",
+    footer: "ひとつの心、ひとつの愛、JKT48",
+    languageAria: "言語を選択",
+    historyTitle: "推し履歴",
+    historyEmpty: "まだ結果がありません。",
+    historyName: "名前",
+    historyOshi: "推し"
+  }
+};
+
+var currentLanguage = 'id';
+var oshiResults = [];
+window.oshiResults = oshiResults;
+
+function getText(key) {
+  var dictionary = translations[currentLanguage] || translations.id;
+  return dictionary[key] || translations.id[key] || '';
+}
+
+function setText(id, value, useHtml) {
+  var element = document.getElementById(id);
+  if (!element) return;
+  if (useHtml) {
+    element.innerHTML = value;
+  } else {
+    element.textContent = value;
+  }
+}
+
+function applyLanguage(language) {
+  currentLanguage = translations[language] ? language : 'id';
+  var languageSelect = document.getElementById('languageSelect');
+  var nameInput = document.getElementById('nameInput');
+  var submitBtn = document.getElementById('submitBtn');
+  var resetBtn = document.getElementById('resetButton');
+
+  document.documentElement.lang = currentLanguage;
+  document.title = getText('pageTitle');
+
+  setText('brandLabel', getText('brandLabel'));
+  setText('brandTitle', getText('brandTitle'), true);
+  setText('subtitleText', getText('subtitle'));
+  setText('memberLinkText', getText('memberLink'));
+  setText('submitText', getText('submit'));
+  setText('resultLabelText', getText('resultLabel'));
+  setText('footerText', getText('footer'));
+  setText('historyLabel', getText('historyTitle'));
+  setText('historyEmpty', getText('historyEmpty'));
+
+  if (nameInput) {
+    nameInput.placeholder = getText('namePlaceholder');
+    nameInput.setAttribute('aria-label', getText('nameAria'));
+  }
+  if (submitBtn) submitBtn.setAttribute('aria-label', getText('submitAria'));
+  if (resetBtn) resetBtn.setAttribute('aria-label', getText('resetAria'));
+  if (languageSelect) {
+    languageSelect.value = currentLanguage;
+    languageSelect.setAttribute('aria-label', getText('languageAria'));
+  }
+
+  try {
+    localStorage.setItem('oshiLanguage', currentLanguage);
+  } catch (e) {}
+
+  renderOshiResults();
+}
+
+function loadOshiResults() {
+  try {
+    var storedResults = JSON.parse(localStorage.getItem('oshiResults') || '[]');
+    oshiResults = Array.isArray(storedResults) ? storedResults : [];
+  } catch (e) {
+    oshiResults = [];
+  }
+  window.oshiResults = oshiResults;
+}
+
+function saveOshiResults() {
+  try {
+    localStorage.setItem('oshiResults', JSON.stringify(oshiResults));
+  } catch (e) {}
+}
+
+function addOshiResult(userName, oshiName) {
+  if (!userName || !oshiName) return;
+
+  oshiResults.unshift({
+    name: userName,
+    oshi: oshiName
+  });
+
+  oshiResults = oshiResults.slice(0, 50);
+  window.oshiResults = oshiResults;
+  saveOshiResults();
+  renderOshiResults();
+}
+
+function renderOshiResults() {
+  var historyList = document.getElementById('historyList');
+  var historyCount = document.getElementById('historyCount');
+  if (!historyList || !historyCount) return;
+
+  historyCount.textContent = oshiResults.length;
+  historyList.innerHTML = '';
+
+  if (!oshiResults.length) {
+    var emptyEl = document.createElement('p');
+    emptyEl.className = 'history-empty';
+    emptyEl.id = 'historyEmpty';
+    emptyEl.textContent = getText('historyEmpty');
+    historyList.appendChild(emptyEl);
+    return;
+  }
+
+  oshiResults.forEach(function (item) {
+    var row = document.createElement('article');
+    row.className = 'history-item';
+
+    var userRow = document.createElement('div');
+    userRow.className = 'history-user';
+
+    var userKey = document.createElement('span');
+    userKey.className = 'history-key';
+    userKey.textContent = getText('historyName');
+
+    var userValue = document.createElement('span');
+    userValue.className = 'history-value';
+    userValue.textContent = item.name || '-';
+
+    var oshiRow = document.createElement('div');
+    oshiRow.className = 'history-oshi';
+
+    var oshiKey = document.createElement('span');
+    oshiKey.className = 'history-key';
+    oshiKey.textContent = getText('historyOshi');
+
+    var oshiValue = document.createElement('span');
+    oshiValue.className = 'history-value';
+    oshiValue.textContent = item.oshi || '-';
+
+    userRow.appendChild(userKey);
+    userRow.appendChild(userValue);
+    oshiRow.appendChild(oshiKey);
+    oshiRow.appendChild(oshiValue);
+    row.appendChild(userRow);
+    row.appendChild(oshiRow);
+    historyList.appendChild(row);
+  });
+}
+
 /* ═══════════════════════════════════════════════════════════
    Particle Star Field — Canvas Background
 ════════════════════════════════════════════════════════════ */
@@ -267,6 +476,7 @@ var nameGenerator;
     if (randomName) {
       this.usedNames.add(nameInput.toLowerCase());
       this.nameMap.set(nameInput, randomName);
+      addOshiResult(nameInput, randomName);
       this.showName(randomName, nameDisplayElement);
     }
   };
@@ -301,7 +511,7 @@ var nameGenerator;
     resultArea.classList.add('active');
 
     /* Tampilkan hint */
-    resultHint.textContent = 'Hasil akan hilang dalam 5 detik...';
+    resultHint.textContent = getText('resultHint');
     resultHint.classList.add('visible');
 
     /* Confetti */
@@ -333,6 +543,10 @@ var nameGenerator;
 
     this.usedNames.clear();
     this.nameMap.clear();
+    oshiResults = [];
+    window.oshiResults = oshiResults;
+    saveOshiResults();
+    renderOshiResults();
 
     var nameDisplay = document.getElementById('nameDisplay');
     var resultHint = document.getElementById('resultHint');
@@ -355,7 +569,7 @@ var nameGenerator;
     nameInput.value = '';
     nameInput.focus();
 
-    showToast('Data sudah direset!');
+    showToast(getText('resetDone'));
   };
 
   /* Inisialisasi */
@@ -368,13 +582,27 @@ var nameGenerator;
 var nameInput = document.getElementById('nameInput');
 var submitBtn = document.getElementById('submitBtn');
 var resetBtn = document.getElementById('resetButton');
+var languageSelect = document.getElementById('languageSelect');
+
+var savedLanguage = 'id';
+try {
+  savedLanguage = localStorage.getItem('oshiLanguage') || 'id';
+} catch (e) {}
+loadOshiResults();
+applyLanguage(savedLanguage);
+
+if (languageSelect) {
+  languageSelect.addEventListener('change', function () {
+    applyLanguage(languageSelect.value);
+  });
+}
 
 /* Klik tombol submit */
 submitBtn.addEventListener('click', function () {
   var name = nameInput.value.trim();
 
   if (!name) {
-    showToast('Tulis namamu dulu yuk!');
+    showToast(getText('emptyName'));
     nameInput.focus();
 
     nameInput.classList.remove('shake');
@@ -397,7 +625,7 @@ nameInput.addEventListener('keydown', function (e) {
     var name = nameInput.value.trim();
 
     if (!name) {
-      showToast('Tulis namamu dulu yuk!');
+      showToast(getText('emptyName'));
       nameInput.focus();
 
       nameInput.classList.remove('shake');

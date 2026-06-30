@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Siapa Oshimu? — JKT48</title>
+    <title>Siapa Oshimu? - JKT48</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800;900&display=swap"
       rel="stylesheet"
@@ -13,6 +13,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
     <link rel="stylesheet" href="Oshi.css" />
+    <link rel="icon" href="logo-rounded.png" type="image/png" />
   </head>
 
   <body>
@@ -47,32 +48,46 @@
     <!-- Confetti Container -->
     <div class="confetti-container" id="confettiBox" aria-hidden="true"></div>
 
-    <!-- Main Card -->
-    <main class="card-wrapper">
-      <div class="card">
-        <div class="card-inner-glow" aria-hidden="true"></div>
+    <!-- Navbar -->
+    <header class="site-navbar">
+      <img class="navbar-banner" src="nav-banner.png" alt="JKT48" />
+      <label class="language-control" for="languageSelect">
+        <i class="fa-solid fa-globe" aria-hidden="true"></i>
+        <select id="languageSelect" aria-label="Pilih bahasa">
+          <option value="id">IDN</option>
+          <option value="en">ENG</option>
+          <option value="ja">JPN</option>
+        </select>
+      </label>
+    </header>
+
+    <div class="app-layout">
+      <!-- Main Card -->
+      <main class="card-wrapper">
+        <div class="card">
+          <div class="card-inner-glow" aria-hidden="true"></div>
 
         <!-- Brand -->
         <div class="brand">
           <div class="brand-icon" aria-hidden="true">
             <i class="fa-solid fa-star"></i>
           </div>
-          <p class="brand-label">JKT48 Fan Zone</p>
-          <h1 class="brand-title">
+          <p class="brand-label" id="brandLabel">JKT48 Fan Zone</p>
+          <h1 class="brand-title" id="brandTitle">
             Siapa <span class="highlight">Oshimu</span>?
           </h1>
         </div>
 
         <!-- Subtitle -->
         <p class="subtitle">
-          Masukkan namamu, lalu temukan siapa member JKT48 yang jadi oshimu!
+          <span id="subtitleText">Masukkan namamu, lalu temukan siapa member JKT48 yang jadi oshimu!</span>
           <br />
           <a
-            href="https://p2k.stekom.ac.id/ensiklopedia/Daftar_anggota_JKT48"
+            href="https://jkt48.com/member"
             target="_blank"
             rel="noopener"
           >
-            Lihat daftar member
+            <span id="memberLinkText">Lihat daftar member</span>
             <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.6rem;"></i>
           </a>
         </p>
@@ -103,7 +118,7 @@
           <button class="btn-submit" id="submitBtn" aria-label="Cari oshi">
             <span>
               <i class="fa-solid fa-shuffle" aria-hidden="true"></i>
-              Cari Oshimu
+              <span id="submitText">Cari Oshimu</span>
             </span>
           </button>
           <button class="btn-reset" id="resetButton" aria-label="Reset">
@@ -116,7 +131,7 @@
           <div class="result-card">
             <p class="result-label">
               <i class="fa-solid fa-crown" aria-hidden="true"></i>
-              Oshimu adalah
+              <span id="resultLabelText">Oshimu adalah</span>
             </p>
             <p class="result-name" id="nameDisplay"></p>
             <p class="result-hint" id="resultHint"></p>
@@ -126,11 +141,23 @@
         <!-- Footer -->
         <p class="footer-tag">
           <i class="fa-solid fa-star star-icon" aria-hidden="true"></i>
-          Satu Hati, Satu Cinta, JKT48
+          <span id="footerText">Satu Hati, Satu Cinta, JKT48</span>
           <i class="fa-solid fa-star star-icon" aria-hidden="true"></i>
         </p>
-      </div>
-    </main>
+        </div>
+      </main>
+
+      <!-- Saved Results -->
+      <aside class="history-panel" aria-live="polite">
+        <div class="history-header">
+          <p class="history-label" id="historyLabel">Riwayat Oshi</p>
+          <span class="history-count" id="historyCount">0</span>
+        </div>
+        <div class="history-list" id="historyList">
+          <p class="history-empty" id="historyEmpty">Belum ada hasil.</p>
+        </div>
+      </aside>
+    </div>
 
     <script src="Oshi.js"></script>
   </body>

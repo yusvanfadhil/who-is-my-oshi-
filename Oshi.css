@@ -58,7 +58,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   position: relative;
 }
 
@@ -237,12 +238,191 @@ body {
 /* ═══════════════════════════════════════════════════════════
    Main Card — Glassmorphism
 ════════════════════════════════════════════════════════════ */
-.card-wrapper {
+/* Navbar */
+.site-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: rgba(13, 10, 14, 0.55);
+  backdrop-filter: blur(18px) saturate(1.4);
+  -webkit-backdrop-filter: blur(18px) saturate(1.4);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.navbar-banner {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: drop-shadow(0 8px 20px rgba(192, 39, 45, 0.35));
+}
+
+.language-control {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  z-index: 2;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.42rem 0.5rem;
+  background: rgba(13, 10, 14, 0.48);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  color: #fff;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.language-control i {
+  font-size: 0.78rem;
+  color: var(--gold-light);
+}
+
+.language-control select {
+  min-width: 48px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #fff;
+  font: 700 0.72rem/1 'Poppins', sans-serif;
+  cursor: pointer;
+}
+
+.language-control option {
+  color: #111;
+}
+
+.app-layout {
   position: relative;
   z-index: 10;
+  width: min(100% - 3rem, 920px);
+  margin: 5.5rem 1.5rem 1.5rem;
+  display: grid;
+  grid-template-columns: minmax(0, 500px) minmax(260px, 320px);
+  align-items: start;
+  justify-content: center;
+  gap: 1.2rem;
+}
+
+.card-wrapper {
+  position: relative;
   width: 100%;
   max-width: 480px;
-  margin: 1.5rem;
+  margin: 0;
+}
+
+.history-panel {
+  position: relative;
+  width: 100%;
+  max-height: min(680px, calc(100vh - 7rem));
+  overflow: hidden;
+  background: var(--bg-card);
+  backdrop-filter: blur(28px) saturate(1.5);
+  -webkit-backdrop-filter: blur(28px) saturate(1.5);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  animation: cardEntry 1.1s 0.15s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.history-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(135deg, rgba(192, 39, 45, 0.18), rgba(255, 107, 157, 0.08));
+}
+
+.history-label {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.history-count {
+  min-width: 28px;
+  height: 28px;
+  padding: 0 0.45rem;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.history-list {
+  max-height: calc(min(680px, calc(100vh - 7rem)) - 61px);
+  overflow-y: auto;
+  padding: 0.75rem;
+}
+
+.history-empty {
+  padding: 1rem 0.7rem;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.history-item {
+  display: grid;
+  gap: 0.4rem;
+  padding: 0.85rem;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.history-item + .history-item {
+  margin-top: 0.65rem;
+}
+
+.history-user,
+.history-oshi {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.history-key {
+  flex-shrink: 0;
+  color: var(--text-muted);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.history-value {
+  min-width: 0;
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+
+.history-oshi .history-value {
+  color: var(--gold-light);
 }
 
 .card {
@@ -1014,8 +1194,38 @@ body {
    Responsive — Mobile Kecil
 ════════════════════════════════════════════════════════════ */
 @media (max-width: 360px) {
+  .site-navbar {
+    height: 64px;
+  }
+
+  .language-control {
+    right: 0.55rem;
+    padding: 0.35rem 0.42rem;
+  }
+
+  .language-control i {
+    display: none;
+  }
+
+  .language-control select {
+    min-width: 42px;
+    font-size: 0.68rem;
+  }
+
+  .navbar-banner {
+    width: 100%;
+    height: 100%;
+  }
+
+  .app-layout {
+    margin: 4.8rem 1rem 1rem;
+    width: calc(100% - 2rem);
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
   .card-wrapper {
-    margin: 1rem;
+    margin: 0;
   }
 
   .card {
@@ -1072,6 +1282,30 @@ body {
    Responsive — Mobile Standard
 ════════════════════════════════════════════════════════════ */
 @media (min-width: 361px) and (max-width: 520px) {
+  .site-navbar {
+    height: 68px;
+  }
+
+  .language-control {
+    right: 0.7rem;
+  }
+
+  .navbar-banner {
+    width: 100%;
+    height: 100%;
+  }
+
+  .app-layout {
+    margin: 5rem 1rem 1rem;
+    width: calc(100% - 2rem);
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .card-wrapper {
+    margin: 0;
+  }
+
   .card {
     padding: 2.2rem 1.5rem 2rem;
     border-radius: 22px;
@@ -1130,8 +1364,43 @@ body {
    Responsive — Tablet
 ════════════════════════════════════════════════════════════ */
 @media (min-width: 521px) and (max-width: 768px) {
+  .app-layout {
+    width: min(100% - 2rem, 520px);
+    grid-template-columns: 1fr;
+    margin: 5.5rem 1rem 1rem;
+  }
+
   .card-wrapper {
     max-width: 440px;
+    margin: 0 auto;
+  }
+
+  .history-panel {
+    max-height: 320px;
+  }
+
+  .history-list {
+    max-height: 259px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 980px) {
+  .app-layout {
+    width: min(100% - 2rem, 560px);
+    grid-template-columns: 1fr;
+    margin: 5.5rem 1rem 1rem;
+  }
+
+  .card-wrapper {
+    margin: 0 auto;
+  }
+
+  .history-panel {
+    max-height: 340px;
+  }
+
+  .history-list {
+    max-height: 279px;
   }
 }
 
